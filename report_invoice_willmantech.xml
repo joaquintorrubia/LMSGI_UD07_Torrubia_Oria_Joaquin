@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_willmantech">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report_invoice_willmantech_template"/>
+            </t>
+        </t>
+    </template>
+    
+    
+    <template id="report_invoice_willmantech_template">
+        
+        <div class="page">
+            
+        </div>
+    </template>
+</odoo>
