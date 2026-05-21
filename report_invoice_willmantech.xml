@@ -1,18 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_invoice_willmantech">
-        <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="report_invoice_willmantech_template"/>
-            </t>
+    <template id="report_invoice_willmantech" name="WillmanTech - Factura">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h1 class="text-center">FACTURA</h1>
+                
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <strong>WillmanTech S.L.</strong><br/>
+                        <span t-field="o.company_id.street"/><br/>
+                        NIF: <span t-field="o.company_id.vat"/>
+                    </div>
+                    <div class="col-6 text-end">
+                        <strong>Nº Factura:</strong> <span t-field="o.name"/><br/>
+                        <strong>Fecha:</strong> <span t-field="o.invoice_date"/>
+                    </div>
+                </div>
+                
+                <hr/>
+                
+                
+                <div class="mt-3">
+                    <strong>Cliente:</strong> <span t-field="o.partner_id.name"/><br/>
+                    <span t-field="o.partner_id.street"/>
+                </div>
+                
+               
+                <table class="table table-bordered mt-4">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th class="text-end">Cantidad</th>
+                            <th class="text-end">Precio</th>
+                            <th class="text-end" t-if="o.invoice_line_ids.filtered(lambda l: l.discount > 0)">Descuento</th>
+                            <th class="text-end">Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="o.invoice_line_ids" t-as="line">
+                            <tr>
+                                <td><span t-field="line.name"/></td>
+                                <td class="text-end"><span t-field="line.quantity"/></td>
+                                <td class="text-end"><span t-field="line.price_unit"/></td>
+                                <td class="text-end" t-if="line.discount > 0">
+                                    <span t-field="line.discount"/>%
+                                </td>
+                                <td class="text-end"><span t-field="line.price_subtotal"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                
+                
+                <div class="row mt-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <table class="table table-sm text-end">
+                            <tr>
+                                <th>Base:</th>
+                                <td><span t-field="o.amount_untaxed"/></td>
+                            </tr>
+                            <tr>
+                                <th>IVA:</th>
+                                <td><span t-field="o.amount_tax"/></td>
+                            </tr>
+                            <tr class="fw-bold">
+                                <th>Total:</th>
+                                <td><span t-field="o.amount_total"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <p class="text-center mt-5">Gracias por elegir WillmanTech S.L.</p>
+            </div>
         </t>
-    </template>
-    
-    
-    <template id="report_invoice_willmantech_template">
-        
-        <div class="page">
-            
-        </div>
     </template>
 </odoo>
