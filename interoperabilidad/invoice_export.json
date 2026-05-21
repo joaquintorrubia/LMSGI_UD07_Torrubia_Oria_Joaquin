@@ -1,0 +1,34 @@
+{
+  "numero_factura": "FACT-2026-001",
+  "fecha_emision": "2026-05-20",
+  "empresa": "WillmanTech S.L.",
+  "cliente": {
+    "nombre": "Cliente Ejemplo SL",
+    "nif": "B87654321",
+    "email": "cliente@ejemplo.com",
+    "direccion": "Avenida Principal 123, Sevilla"
+  },
+  "lineas": [
+    {
+      "descripcion": "Servicio de desarrollo de software personalizado",
+      "cantidad": 1,
+      "precio_unitario": 2500.00,
+      "descuento": 0,
+      "subtotal": 2500.00
+    },
+    {
+      "descripcion": "Mantenimiento mensual del sistema ERP",
+      "cantidad": 3,
+      "precio_unitario": 450.00,
+      "descuento": 10,
+      "subtotal": 1215.00
+    }
+  ],
+  "totales": {
+    "base_imponible": 3715.00,
+    "iva": 780.15,
+    "total": 4495.15
+  },
+  "moneda": "EUR",
+  "notas": "Factura de ejemplo para prueba de exportación"
+}
